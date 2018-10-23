@@ -60,6 +60,11 @@ int main(int argc , char **argv)
 		if((childpid = fork()) == 0) 
 		{
 			close(listenfd);
+			
+			exit(0);
+		}//if
+		else
+		{
 			//str_echo
 			ssize_t n;
 			char buff[MAX_LINE];
@@ -67,8 +72,7 @@ int main(int argc , char **argv)
 			{
 				write(connfd , buff , n);
 			}
-			exit(0);
-		}//if
+		}
 		close(connfd);
 	}//for
 	
